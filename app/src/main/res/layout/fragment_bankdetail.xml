@@ -1,6 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/txtAccountNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12sp"
+        android:gravity="center"
+        android:hint="Enter Account Number"
+        android:padding="12sp" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtAccountNo"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btnDeposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtAccountNo"
+            android:layout_margin="12sp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:hint="Deposit"
+            android:padding="12sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnWithdrawal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtAccountNo"
+            android:layout_margin="12sp"
+            android:layout_toEndOf="@+id/btnAmount"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:hint="Withdrawl"
+            android:layout_weight="1"
+            android:padding="12sp"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameFragment"
+        android:layout_below="@id/LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/layoutLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frameFragment"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/showText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/recyclerView"
+            android:layout_marginRight="12sp"
+            android:layout_marginTop="12sp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="12sp"
+            android:text="Total Amount : "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/totalAmtTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/recyclerView"
+            android:layout_marginRight="12sp"
+            android:layout_marginTop="12sp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="12sp"
+            android:text="14000"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/viewDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutLinear"
+        android:background="@color/colorPrimary"
+        android:padding="12sp"
+        android:text="View Bank Detail"
+        android:layout_margin="25dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

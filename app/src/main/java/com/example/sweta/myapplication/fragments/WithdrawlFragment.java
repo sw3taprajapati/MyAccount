@@ -10,15 +10,15 @@ import android.view.ViewGroup;
 import com.example.sweta.myapplication.R;
 
 /**
- * Created by sweta on 4/12/18.
+ * Created by sweta on 4/16/18.
  */
 
-public class CreditFragment extends Fragment {
+public class WithdrawlFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_credit,container,false);
+        View view=inflater.inflate(R.layout.fragment_withdrawl,container,false);
 
         return view;
 

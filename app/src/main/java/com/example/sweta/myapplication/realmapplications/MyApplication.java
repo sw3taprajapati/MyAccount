@@ -22,7 +22,7 @@ public class MyApplication extends Application {
 
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
                 .schemaVersion(1)
-                .name("income")
+                .name("Account")
                 .deleteRealmIfMigrationNeeded()
                 .build();
 

@@ -5,23 +5,23 @@
     <item
         android:visible="true"
         android:id="@+id/menuIncome"
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:title="Income"/>
 
     <item
         android:visible="true"
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:id="@+id/menuCredit"
         android:title="Credit"/>
 
     <item
         android:visible="true"
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:id="@+id/menuExpenses"
         android:title="Expenses"/>
     <item
         android:visible="true"
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:id="@+id/menuBankDetails"
         android:title="Bank Details"/>
 
