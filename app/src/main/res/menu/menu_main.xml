@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:visible="true"
+        android:id="@+id/menuIncome"
+        app:showAsAction="ifRoom"
+        android:title="Income"/>
+
+    <item
+        android:visible="true"
+        app:showAsAction="ifRoom"
+        android:id="@+id/menuCredit"
+        android:title="Credit"/>
+
+    <item
+        android:visible="true"
+        app:showAsAction="ifRoom"
+        android:id="@+id/menuExpenses"
+        android:title="Expenses"/>
+    <item
+        android:visible="true"
+        app:showAsAction="ifRoom"
+        android:id="@+id/menuBankDetails"
+        android:title="Bank Details"/>
+
+</menu>
