@@ -20,9 +20,10 @@ public class PojoIncome extends RealmObject {
     public PojoIncome() {
     }
 
-    public PojoIncome(Integer id, Integer incomeAmount,
+    public PojoIncome(Integer incomeAmount,
                       String incomeSource, String incomeDate) {
-        this.id = id;
+        //remove initializing id --> primary key
+//        this.id = id;
         this.incomeAmount = incomeAmount;
         this.incomeSource = incomeSource;
         this.incomeDate = incomeDate;

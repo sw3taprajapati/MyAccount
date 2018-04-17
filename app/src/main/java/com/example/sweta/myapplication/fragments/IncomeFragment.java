@@ -1,8 +1,5 @@
 package com.example.sweta.myapplication.fragments;
 
-import android.annotation.TargetApi;
-import android.icu.text.SimpleDateFormat;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,10 +15,8 @@ import android.widget.Toast;
 import com.example.sweta.myapplication.R;
 import com.example.sweta.myapplication.adapter.IncomeAdapter;
 import com.example.sweta.myapplication.pojoclasses.PojoIncome;
-import com.example.sweta.myapplication.recyclerviews.IncomeRecyclerView;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import io.realm.Realm;
@@ -33,7 +27,6 @@ import io.realm.RealmResults;
  */
 
 public class IncomeFragment extends Fragment implements View.OnClickListener {
-
     private TextView amountText;
     private TextView sourceText;
     private TextView dateText;
@@ -45,15 +38,16 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
     private String date;
     private String source;
     private PojoIncome myPojo;
+    //adapter for recyclerview
+    private IncomeAdapter incomeAdapter;
+    //list for recyclerview
+    private List<PojoIncome> pojoIncomeList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_income, container, false);
-
         return view;
-
-
     }
 
     @Override
@@ -61,12 +55,12 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
 
         initComponents();
+        initRecyclerView();
         setListener();
-        recycleData();
+        populateReyclerView();
     }
 
     private void initComponents() {
-
         amountText = getActivity().findViewById(R.id.txtAmount);
         sourceText = getActivity().findViewById(R.id.txtSource);
         dateText = getActivity().findViewById(R.id.txtDate);
@@ -75,11 +69,17 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
         totalAmount = getActivity().findViewById(R.id.totalAmtTxt);
     }
 
-
+    private void initRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        pojoIncomeList = new ArrayList<>();
+        incomeAdapter = new IncomeAdapter(pojoIncomeList);
+        recyclerView.setAdapter(incomeAdapter);
+    }
 
     private void setListener() {
         updateButton.setOnClickListener(this);
     }
+
     @Override
     public void onClick(View view) {
 
@@ -112,9 +112,9 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
                                 Toast.LENGTH_SHORT)
                                 .show();
                     } else {
-                        myPojo = new PojoIncome(1,amount, source, date);
+                        myPojo = new PojoIncome(amount, source, date);
                         insertToRealm();
-                        recycleData();
+                        populateReyclerView();
                         Toast.makeText(getActivity(), "Sucessful",
                                 Toast.LENGTH_SHORT)
                                 .show();
@@ -124,24 +124,21 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void insertToRealm(){
-
+    private void insertToRealm() {
         realm = Realm.getDefaultInstance();
-
         realm.beginTransaction();
-
         realm.copyToRealmOrUpdate(myPojo);
-
         realm.commitTransaction();
-
         realm.close();
     }
 
-    private void recycleData(){
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frameFragment, new IncomeRecyclerView())
-                .commit();
+    private void populateReyclerView() {
+        realm = Realm.getDefaultInstance();
+        //get all PojoIncome
+        RealmResults<PojoIncome> pojoIncomeRealmResultsList = realm.where(PojoIncome.class).findAll();
+        //add all pojoIncomeRealmResultsList to our recyclerview list
+        pojoIncomeList.addAll(realm.copyFromRealm(pojoIncomeRealmResultsList));
+        //notify dataset changed to recyclerview
+        incomeAdapter.notifyDataSetChanged();
     }
-
-
 }
