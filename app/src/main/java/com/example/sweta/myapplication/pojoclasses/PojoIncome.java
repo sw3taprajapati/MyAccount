@@ -12,6 +12,7 @@ import io.realm.annotations.PrimaryKey;
 public class PojoIncome extends RealmObject {
 
     @PrimaryKey
+    private Integer id;
     private Integer incomeAmount;
     private String incomeSource;
     private String incomeDate;
@@ -19,11 +20,17 @@ public class PojoIncome extends RealmObject {
     public PojoIncome() {
     }
 
-    public PojoIncome(Integer incomeAmount, String incomeSource, String incomeDate) {
+    public PojoIncome(Integer id, Integer incomeAmount,
+                      String incomeSource, String incomeDate) {
+        this.id = id;
         this.incomeAmount = incomeAmount;
         this.incomeSource = incomeSource;
         this.incomeDate = incomeDate;
     }
+
+    public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
 
     public Integer getIncomeAmount() {
         return incomeAmount;

@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private void initToolbar(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("My Account");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -81,5 +82,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(pagerView);
 
     }
+
+
 
 }

@@ -112,7 +112,7 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
                                 Toast.LENGTH_SHORT)
                                 .show();
                     } else {
-                        myPojo = new PojoIncome(amount, source, date);
+                        myPojo = new PojoIncome(1,amount, source, date);
                         insertToRealm();
                         recycleData();
                         Toast.makeText(getActivity(), "Sucessful",
@@ -124,8 +124,9 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void insertToRealm() {
-        Realm realm = Realm.getDefaultInstance();
+    private void insertToRealm(){
+
+        realm = Realm.getDefaultInstance();
 
         realm.beginTransaction();
 
@@ -141,4 +142,6 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
                 .replace(R.id.frameFragment, new IncomeRecyclerView())
                 .commit();
     }
+
+
 }

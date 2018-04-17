@@ -35,9 +35,20 @@ public class IncomeRecyclerView  extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.recycler_view_income,container,false);
+        View view=inflater.inflate(R.layout.fragment_income,container,false);
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initViews();
+        initRecyclerView();
+        setDataToAdapter();
+    }
+    private void initViews() {
+        recycleView = getActivity().findViewById(R.id.recyclerView);
     }
 
     private void initRecyclerView() {
@@ -48,6 +59,7 @@ public class IncomeRecyclerView  extends Fragment {
 
         myAdapter = new IncomeAdapter(myPojoList);
         recycleView.setAdapter(myAdapter);
+
     }
 
     private void setDataToAdapter() {

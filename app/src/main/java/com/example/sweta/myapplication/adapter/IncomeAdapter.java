@@ -39,7 +39,7 @@ public class IncomeAdapter extends RecyclerView.Adapter<ViewHolderIncome> {
             PojoIncome myPojo=pojoIncomeList.get(position);
             holder.amount.setText(myPojo.getIncomeAmount().toString());
             holder.source.setText(myPojo.getIncomeSource().toString());
-            holder.txtDate.setText(myPojo.getIncomeSource().toString());
+            holder.txtDate.setText(myPojo.getIncomeDate().toString());
         }
 
         @Override
