@@ -3,6 +3,7 @@ package com.example.sweta.myapplication.pojoclasses;
 import java.util.Date;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by sweta on 4/16/18.
@@ -10,14 +11,15 @@ import io.realm.RealmObject;
 
 public class PojoIncome extends RealmObject {
 
+    @PrimaryKey
     private Integer incomeAmount;
     private String incomeSource;
-    private Date incomeDate;
+    private String incomeDate;
 
     public PojoIncome() {
     }
 
-    public PojoIncome(Integer incomeAmount, String incomeSource, Date incomeDate) {
+    public PojoIncome(Integer incomeAmount, String incomeSource, String incomeDate) {
         this.incomeAmount = incomeAmount;
         this.incomeSource = incomeSource;
         this.incomeDate = incomeDate;
@@ -39,11 +41,11 @@ public class PojoIncome extends RealmObject {
         this.incomeSource = incomeSource;
     }
 
-    public Date getIncomeDate() {
+    public String getIncomeDate() {
         return incomeDate;
     }
 
-    public void setIncomeDate(Date incomeDate) {
+    public void setIncomeDate(String incomeDate) {
         this.incomeDate = incomeDate;
     }
 }

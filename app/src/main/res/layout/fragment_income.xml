@@ -48,8 +48,14 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@color/white"
         android:layout_below="@id/btnSave"
+        android:layout_margin="12sp"/>
+
+    <FrameLayout
+        android:id="@+id/frameFragment"
+        android:layout_below="@id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
         android:layout_margin="12sp"/>
 
     <LinearLayout
@@ -89,5 +95,4 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-
 </RelativeLayout>

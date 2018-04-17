@@ -55,13 +55,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+
+    <Button
+        android:id="@+id/viewDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frameFragment"
+        android:background="@color/colorPrimary"
+        android:padding="12sp"
+        android:text="View Bank Detail"
+        android:layout_margin="25dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"/>
+
     <LinearLayout
         android:id="@+id/layoutLinear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/frameFragment"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="2"
+        android:layout_margin="25sp">
 
         <TextView
             android:id="@+id/showText"
@@ -94,17 +109,8 @@
             android:textSize="20sp" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/viewDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutLinear"
-        android:background="@color/colorPrimary"
-        android:padding="12sp"
-        android:text="View Bank Detail"
-        android:layout_margin="25dp"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true"/>
-
+    <FrameLayout
+        android:id="@+id/MainFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initToolbar(){
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Sujindra Maharjan");
+        getSupportActionBar().setTitle("My Account");
     }
 
     @Override
@@ -50,17 +50,21 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if(item.getItemId()==R.id.menuIncome){
-            Intent intent=new Intent(MainActivity.this,IncomeFragment.class);
-            startActivity(intent);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameFragment, new IncomeFragment())
+                    .commit();
         }else if(item.getItemId()==R.id.menuCredit) {
-            Intent intent = new Intent(MainActivity.this, CreditFragment.class);
-            startActivity(intent);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameFragment, new CreditFragment())
+                    .commit();
         }else if(item.getItemId()==R.id.menuExpenses) {
-            Intent intent = new Intent(MainActivity.this, ExpensesFragment.class);
-            startActivity(intent);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameFragment, new ExpensesFragment())
+                    .commit();
         }else if(item.getItemId()==R.id.menuBankDetails) {
-            Intent intent = new Intent(MainActivity.this, BankDetailFragment.class);
-            startActivity(intent);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameFragment, new BankDetailFragment())
+                    .commit();
         }
         return super.onOptionsItemSelected(item);
     }
